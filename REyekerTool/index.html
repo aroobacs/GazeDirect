@@ -1,0 +1,52 @@
+<html>
+<head>
+    <title>rEYEker</title>
+    <meta charset="utf-8"/>
+    <script src="scripts/require.js"></script>
+    <script src="scripts/rEYEker.js"></script>
+</head>
+<body>
+<div id="Image">
+    <div style="position: relative;">
+        <canvas id="bubble-image-canvas" style="position: relative; left: 0; top: 0;"></canvas>
+        <canvas id="visible-image-canvas" style="position: absolute; left: 0; top: 0;"></canvas>
+    </div>
+</div>
+<div id="attributeText">
+    <div class="htmlTesting">
+    <h3>html Testing</h3>
+        <h4>General</h4>
+        x-Folding Range<label id="xFoldingRangeLabel"> [2]</label>             <input type="range" min="1" max="50"  value="5" class="slider" id="xFoldingRange"><br>
+        y-Folding Range<label id="yFoldingRangeLabel"> [2]</label>             <input type="range" min="1" max="50"  value="5" class="slider" id="yFoldingRange"><br>
+        blur Radius<label id="blurRadiusLabel"> [50]</label>                   <input type="range" min="1" max="200" value="50" class="slider" id="blurRadius"><br>
+        <h4>Rectangle</h4>
+        use rectangle <input type="checkbox" id="useRectangleCheckbox" checked="true"><br>
+        minimal x Visibility<label id="minimalXVisibilityLabel"> [50]</label>  <input type="range" min="1" max="200" value="50" class="slider" id="minimalXVisibility"><br>
+        minimal y Visibility<label id="minimalYVisibilityLabel"> [50]</label>  <input type="range" min="1" max="200" value="50" class="slider" id="minimalYVisibility"><br>
+        <h4>Circle</h4>
+        use circle <input type="checkbox" id="useCircleCheckbox"><br>
+        circle radius <label id="circleRadiusLabel"> [50]</label> <input type="range" min="1" max="200" value="50" class="slider" id="circleRadius"><br>
+        <h4>Ellipse</h4>
+        use ellipse <input type="checkbox" id="useEllipseCheckbox"><br>
+        ellipse radius x <label id="ellipseXRadiusLabel"> [50]</label> <input type="range" min="1" max="200" value="50" class="slider" id="ellipseXRadius"><br>
+        ellipse radius y <label id="ellipseYRadiusLabel"> [50]</label> <input type="range" min="1" max="200" value="50" class="slider" id="ellipseYRadius"><br>
+        <br>
+        Mouse Click: <input type="checkbox" id="mouseClickActivation" checked><br>
+        <br>
+        Example:<br>
+        1) <input type="checkbox" id="ex_1" checked="true"> <br>
+        2) <input type="checkbox" id="ex_2"> <br>
+        3) <input type="checkbox" id="ex_3"> <br>
+    </div>
+</div>
+<script>
+    let times = [
+        //start time, stop time, x_coordinate, y_coordinate
+        [0, 2000, 100, 100],
+        [2000, 4000, 100, 200],
+        [4000, 8000, 100, 300],
+    ]
+    require(['rEYEker']);
+</script>
+</body>
+</html>
