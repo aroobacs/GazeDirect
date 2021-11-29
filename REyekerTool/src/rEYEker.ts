@@ -38,12 +38,6 @@ let use_rectangle = true;
 let use_circle = false;
 let use_ellipse = false;
 
-let today = new Date();
-let start_time = null;
-let interface_set = false;
-let calculation_done = null
-let current_moment = 0;
-
 /**
  * A Section for used html references
  */
@@ -58,11 +52,11 @@ let minimalXVisibilityInput: HTMLInputElement; //a scrollbar for minimal x visib
 let minimalYVisibilityInput: HTMLInputElement; //a scrollbar for minimal y visibility
 
 let useCircleInput: HTMLInputElement; //checkbox if a circle should be used
-let circleRadiusInput: HTMLInputElement;   //a scrollbar for circle radius
+let circleRadiusInput : HTMLInputElement;   //a scrollbar for circle radius
 
 let useEllipseInput: HTMLInputElement; //checkbox if a ellipse should be usedCircle
-let ellipseXRadiusInput: HTMLInputElement; //a scrollbar for ellipse x radius
-let ellipseYRadiusInput: HTMLInputElement; //a scrollbar for ellipse y radius
+let ellipseXRadiusInput : HTMLInputElement; //a scrollbar for ellipse x radius
+let ellipseYRadiusInput : HTMLInputElement; //a scrollbar for ellipse y radius
 
 
 let blurRadiusInput: HTMLInputElement; //a scrollbar for generell blur radius input
@@ -89,15 +83,15 @@ if (UseCases.htmlTesting === true) {
     useRectangleInput = <HTMLInputElement>document.getElementById("useRectangleCheckbox")
     useCircleInput = <HTMLInputElement>document.getElementById("useCircleCheckbox")
     useEllipseInput = <HTMLInputElement>document.getElementById("useEllipseCheckbox")
-    circleRadiusInput = <HTMLInputElement>document.getElementById("circleRadius")
-    ellipseXRadiusInput = <HTMLInputElement>document.getElementById("ellipseXRadius")
-    ellipseYRadiusInput = <HTMLInputElement>document.getElementById("ellipseYRadius")
+    circleRadiusInput  = <HTMLInputElement>document.getElementById("circleRadius")
+    ellipseXRadiusInput  = <HTMLInputElement>document.getElementById("ellipseXRadius")
+    ellipseYRadiusInput  = <HTMLInputElement>document.getElementById("ellipseYRadius")
 }
 
 if (UseCases.soSciSurvey === true) {
     imageUrl = document.getElementById("imageToBlurTag").innerHTML; //the used test image, use an rgba (8 bit color depth) image
     variableNameClickLog = document.getElementById("clickLogVariable").innerHTML; //the name of the inner variable of soSci
-    if (document.getElementById("timeLogVariable") != null) {
+    if(document.getElementById("timeLogVariable")!=null){
         variableNameTimeLog = document.getElementById("timeLogVariable").innerHTML; //the name of the inner variable of soSci
     }
     visibleImageCanvas = <HTMLCanvasElement>document.getElementById("visible-image-canvas");
@@ -109,16 +103,29 @@ let ctx: CanvasRenderingContext2D = canvas.getContext("2d");
 let image: HTMLImageElement = new Image();
 let eyeTrackImage: ImageCalculator;
 
-document.addEventListener('keydown', (e) => {
-    if (e.code === "Space") {
-        e.preventDefault()
-        current_moment = current_moment + 1;
-        console.log(current_moment)
-        if(current_moment < times.length){
-            start_time = new Date().getTime() - times[current_moment][0];
-        }
+/**
+ * a function to forward the x and y coordinates if the mouse is moved
+ */
+visibleImageCanvas.addEventListener('mousemove', function (event: MouseEvent) {
+    const rect = visibleImageCanvas.getBoundingClientRect();
+    mouseXOverMainCanvas = event.x - rect.left;
+    mouseYOverMainCanvas = event.y - rect.top;
+    mouseMoved = true;
+})
+
+
+/**
+ * a function to log that the mouse was clicked (left mouse button)
+ */
+visibleImageCanvas.addEventListener('mousedown', function (event: MouseEvent) {
+    if (event.button === 0) {
+        const rect = visibleImageCanvas.getBoundingClientRect();
+        mouseXOverMainCanvas = event.x - rect.left;
+        mouseYOverMainCanvas = event.y - rect.top;
+        mouseClickedLeft = true;
     }
-});
+})
+
 
 /**
  * this condition is executed if html testing is enabled, it sets eventlisteners to certain required html elements
@@ -222,8 +229,8 @@ if (UseCases.htmlTesting === true) {
     /**
      * a function to handle the input of the rectangle checkbox
      */
-    useRectangleInput.onchange = function () {
-        if (useRectangleInput.checked == true) {
+    useRectangleInput.onchange = function(){
+        if(useRectangleInput.checked == true) {
             use_rectangle = true;
             use_circle = false;
             useCircleInput.checked = false;
@@ -236,8 +243,8 @@ if (UseCases.htmlTesting === true) {
     /**
      * a function to handle the input of the circle checkbox
      */
-    useCircleInput.onchange = function () {
-        if (useCircleInput.checked == true) {
+    useCircleInput.onchange = function(){
+        if(useCircleInput.checked == true) {
             use_rectangle = true;
             useRectangleInput.checked = false;
             use_circle = false;
@@ -250,8 +257,8 @@ if (UseCases.htmlTesting === true) {
     /**
      * a function to handle the input of the ellipse checkbox
      */
-    useEllipseInput.onchange = function () {
-        if (useEllipseInput.checked == true) {
+    useEllipseInput.onchange = function(){
+        if(useEllipseInput.checked == true) {
             use_rectangle = true;
             useRectangleInput.checked = false;
             use_circle = false;
@@ -264,7 +271,7 @@ if (UseCases.htmlTesting === true) {
     /**
      * a function to set the circle radius based on the input
      */
-    circleRadiusInput.oninput = function () {
+    circleRadiusInput.oninput = function (){
         const circle_radius = Number(circleRadiusInput.value);
         eyeTrackImage.set_circle_radius(circle_radius);
         document.getElementById("circleRadiusLabel").innerText = "[" + circle_radius + "]";
@@ -273,7 +280,7 @@ if (UseCases.htmlTesting === true) {
     /**
      * a function to set the ellipse x radius based on the input
      */
-    ellipseXRadiusInput.oninput = function () {
+    ellipseXRadiusInput.oninput = function (){
         const ellipseXRadius = Number(ellipseXRadiusInput.value);
         eyeTrackImage.set_ellipse_radius_x(ellipseXRadius);
         document.getElementById("ellipseXRadiusLabel").innerText = "[" + ellipseXRadius + "]";
@@ -282,7 +289,7 @@ if (UseCases.htmlTesting === true) {
     /**
      * a function to set the ellipse y radius based on the input
      */
-    ellipseYRadiusInput.oninput = function () {
+    ellipseYRadiusInput.oninput = function (){
         const ellipseYRadius = Number(ellipseYRadiusInput.value);
         eyeTrackImage.set_ellipse_radius_y(ellipseYRadius);
         document.getElementById("ellipseYRadiusLabel").innerText = "[" + ellipseYRadius + "]";
@@ -323,19 +330,19 @@ image.onload = async function () {
 
     await eyeTrackImage.calculate_blurred(x_blur_radius, y_blur_radius);
 
-    if (use_rectangle) {
+    if(use_rectangle){
         eyeTrackImage.set_use_rectangle();
     }
     eyeTrackImage.set_gradient_radius(grad_radius);
     eyeTrackImage.set_minimal_width_radius(minimal_width);
     eyeTrackImage.set_minimal_height_radius(minimal_height);
 
-    if (use_circle) {
+    if(use_circle){
         eyeTrackImage.set_use_circle();
     }
     eyeTrackImage.set_circle_radius(circle_radius);
 
-    if (use_ellipse) {
+    if(use_ellipse){
         eyeTrackImage.set_use_ellipse();
     }
     eyeTrackImage.set_ellipse_radius_x(ellipse_radius_x);
@@ -343,8 +350,6 @@ image.onload = async function () {
 
 
     calculateNew = false;
-    today = new Date();
-    start_time = today.getTime();
 };
 
 /**
@@ -375,6 +380,9 @@ async function drawSubPart(y_start: number, y_end: number, x_start: number, x_en
  * draws the blurry buffer with the visible parts of the last input
  */
 async function drawBlurryBuffer() {
+    while (eyeTrackImage.read_and_reset_calculated_lock() == false) {
+
+    }
 
     const buffer: number[] = eyeTrackImage.get_blurry_buffer();
 
@@ -414,10 +422,6 @@ async function drawVisiblePart() {
     await redrawRenderArea(buffer, image.width, visibleImageCanvas);
 }
 
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
-
 /**
  * draws the Image based on the state of the Image
  * either:
@@ -428,31 +432,31 @@ function sleep(ms) {
 async function drawImage() {
     if (shouldRenderNew === true) {
         shouldRenderNew = false;
+
         await drawBlurryBuffer();
     } else {
-        if (interface_set == false) {
-            interface_set = true;
-            calculation_done = new Array<boolean>(times.length);
-            for (let i = 0; i < times.length; i++) {
-                calculation_done[i] = false;
-            }
-        }
-        today = new Date();
-        let current_time = today.getTime() - start_time;
+        if (mouseClickMode === false && mouseMoved === true) {
+            mouseMoved = false;
+            await drawVisiblePart();
+        } else if (mouseClickMode === true && mouseClickedLeft === true) {
+            mouseClickedLeft = false;
 
-
-        for (let i = 0; i < times.length; i++) {
-            if (times[i][0] <= current_time && current_time < times[i][1] && calculation_done[i] == false) {
-                calculation_done[i] = true;
-                current_moment = i;
-                mouseXOverMainCanvas = times[i][2];
-                mouseYOverMainCanvas = times[i][3];
-                await drawVisiblePart();
+            await drawVisiblePart();
+            let log = eyeTrackImage.get_click_log();
+            let data = "";
+            for (let i = 0; i < log.length; i++) {
+                data += log[i].get_x() + "-" + log[i].get_y() + " ";
             }
+            console.log("Data: " + data);
+
+            let time = eyeTrackImage.get_click_log_times()
+            data = "";
+            for (let i = 0; i < time.length; i++) {
+                data += time[i] + " ";
+            }
+            console.log("Time: " + data);
         }
-        await sleep(100);
     }
-    return true;
 }
 
 /**
@@ -464,10 +468,7 @@ async function running() {
         image.src = imageUrl;
         shouldRenderNew = true;
     } else {
-        let flag = await drawImage();
-        if (flag == false) {
-            return;
-        }
+        await drawImage();
     }
     requestAnimationFrame(running);
 }
@@ -491,7 +492,7 @@ async function setup() {
                 data += log[i].get_x() + "-" + log[i].get_y() + " ";
             }
             (<HTMLInputElement>document.getElementById(variableNameClickLog)).value = data;
-            if (variableNameTimeLog != null) {
+            if(variableNameTimeLog!=null){
                 let log = eyeTrackImage.get_click_log_times();
                 let data = "";
                 for (let i = 0; i < log.length; i++) {
@@ -530,33 +531,33 @@ async function setup() {
     }
 
     let circle_radius_element = document.getElementById("circle_radius")
-    if (circle_radius_element != null) {
+    if (circle_radius_element != null){
         circle_radius = Number(circle_radius_element.innerHTML)
     }
 
     let ellipse_radius_x_element = document.getElementById("ellipse_radius_x")
-    if (ellipse_radius_x_element != null) {
+    if (ellipse_radius_x_element != null){
         ellipse_radius_x = Number(ellipse_radius_x_element.innerHTML)
     }
 
     let ellipse_radius_y_element = document.getElementById("ellipse_radius_y")
-    if (ellipse_radius_y_element != null) {
+    if (ellipse_radius_y_element != null){
         ellipse_radius_y = Number(ellipse_radius_y_element.innerHTML)
     }
 
-    if (document.getElementById("use_rectangle") != null) {
+    if (document.getElementById("use_rectangle") != null){
         use_rectangle = true
         use_circle = false
         use_ellipse = false
     }
 
-    if (document.getElementById("use_circle") != null) {
+    if (document.getElementById("use_circle") != null){
         use_rectangle = false
         use_circle = true
         use_ellipse = false
     }
 
-    if (document.getElementById("use_ellipse") != null) {
+    if (document.getElementById("use_ellipse") != null){
         use_rectangle = false
         use_circle = false
         use_ellipse = true
