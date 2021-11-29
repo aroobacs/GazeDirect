@@ -28,42 +28,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a9f458ff-f848-4d7e-b22f-abe55be0863f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
->>>>>>> parent of 316a006 (test Commit)
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/rEYEker.d.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/rEYEker.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/rEYEker.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/rEYEker.ts" afterDir="false" />
-<<<<<<< HEAD
-=======
-      <change beforePath="$PROJECT_DIR$/images/Calculation.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/CheckIfLettersOnly_masked.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/InsertSort.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Rectangle.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Student.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/SumArray.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/TI_Fibonacci.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/TR_Fibonacci.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/rEYEker.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/rEYEker.js" afterDir="false" />
->>>>>>> Stashed changes
-=======
-      <change beforePath="$PROJECT_DIR$/../SnippetGeneration/CodeSnippets/Generators/Power.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SnippetGeneration/CodeSnippets/Generators/containsSubstring.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SnippetGeneration/CodeSnippets/Snippets/Power.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SnippetGeneration/CodeSnippets/Snippets/containsSubstring.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SnippetGeneration/CodeSnippets/Source/Power.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SnippetGeneration/CodeSnippets/Source/containsSubstring.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SnippetGeneration/GenSnippetsLib.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../SnippetGeneration/GenSnippetsLib.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SnippetGeneration/GenerateGenerators.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../SnippetGeneration/GenerateGenerators.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SnippetGeneration/GenerateSnippets.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../SnippetGeneration/GenerateSnippets.ipynb" afterDir="false" />
->>>>>>> Stashed changes
-=======
->>>>>>> parent of 316a006 (test Commit)
+      <change beforePath="$PROJECT_DIR$/src/useCases.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/useCases.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +45,6 @@
       <list>
         <option value="tsconfig.json" />
         <option value="TypeScript File" />
-        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -186,10 +152,6 @@
       <workItem from="1614370538422" duration="147000" />
       <workItem from="1617095281377" duration="1227000" />
       <workItem from="1624531554409" duration="1589000" />
-      <workItem from="1634733042345" duration="64000" />
-      <workItem from="1637078295462" duration="1788000" />
-      <workItem from="1638028580613" duration="1444000" />
-      <workItem from="1638175045555" duration="28000" />
     </task>
     <servers />
   </component>
