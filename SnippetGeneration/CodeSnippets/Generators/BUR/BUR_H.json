@@ -1,0 +1,31 @@
+{
+    "font-normal": "JetBrainsMono-Regular.ttf",
+    "font-bold": "JetBrainsMono-Bold.ttf",
+    "font-italic": "JetBrainsMono-BoldItalic.ttf",
+    "font-bold-italic": "JetBrainsMono-Italic.ttf",
+    "font-size": 14,
+    "width-margin": 5,
+    "height-margin": 5,
+    "spacing": 8,
+    "background-color": [
+        255,
+        255,
+        255
+    ],
+    "source-code": [
+        "public class H {",
+        "    public static String method(String str) {",
+        "        if (str.isEmpty())",
+        "            return str;",
+        "        return method(str.substring(1)) + str.charAt(0);",
+        "    }",
+        "",
+        "    public static void main(String[] args) {",
+        "        String str = \"Eye Tracking\";",
+        "        String reversed = method(str);",
+        "        System.out.println(reversed);",
+        "    }",
+        "}",
+        ""
+    ]
+}

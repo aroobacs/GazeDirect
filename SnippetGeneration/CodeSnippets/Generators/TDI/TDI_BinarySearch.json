@@ -1,0 +1,43 @@
+{
+    "font-normal": "JetBrainsMono-Regular.ttf",
+    "font-bold": "JetBrainsMono-Bold.ttf",
+    "font-italic": "JetBrainsMono-BoldItalic.ttf",
+    "font-bold-italic": "JetBrainsMono-Italic.ttf",
+    "font-size": 14,
+    "width-margin": 5,
+    "height-margin": 5,
+    "spacing": 8,
+    "background-color": [
+        255,
+        255,
+        255
+    ],
+    "source-code": [
+        "public class BinarySearch {",
+        "    static int binarySearch(int arr[], int num) {",
+        "        int l = 0, result = arr.length - 1;",
+        "        while (l <= result) {",
+        "            int temp = l + (result - l) / 2;",
+        "            if (arr[temp] == num)",
+        "                return temp;",
+        "            if (arr[temp] < num)",
+        "                l = temp + 1;",
+        "            else",
+        "                result = temp - 1;",
+        "        }",
+        "        return -1;",
+        "    }",
+        "",
+        "    public static void main(String args[]) {",
+        "        int arr[] = { 2, 3, 4, 10, 40 };",
+        "        int num = 10;",
+        "        int position = binarySearch(arr, num);",
+        "        if (position == -1)",
+        "            System.out.println(\"Element not present\");",
+        "        else",
+        "            System.out.println(position);",
+        "    }",
+        "}",
+        ""
+    ]
+}

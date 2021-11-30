@@ -453,8 +453,8 @@ define("useCases", ["require", "exports"], function (require, exports) {
                 value++;
             return value === 1;
         };
-        UseCases.htmlTesting = true;
-        UseCases.soSciSurvey = false;
+        UseCases.htmlTesting = false;
+        UseCases.soSciSurvey = true;
         return UseCases;
     }());
     exports.UseCases = UseCases;
