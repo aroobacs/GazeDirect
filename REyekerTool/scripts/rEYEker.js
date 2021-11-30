@@ -453,8 +453,8 @@ define("useCases", ["require", "exports"], function (require, exports) {
                 value++;
             return value === 1;
         };
-        UseCases.htmlTesting = true;
-        UseCases.soSciSurvey = false;
+        UseCases.htmlTesting = false;
+        UseCases.soSciSurvey = true;
         return UseCases;
     }());
     exports.UseCases = UseCases;
@@ -486,6 +486,11 @@ define("rEYEker", ["require", "exports", "useCases", "ImageCalculator"], functio
     var use_rectangle = true;
     var use_circle = false;
     var use_ellipse = false;
+    var today = new Date();
+    var start_time = null;
+    var interface_set = false;
+    var calculation_done = null;
+    var current_step = 0;
     var visibleImageCanvas;
     var clickLogCanvas;
     var xFoldingRangeInput;
@@ -503,6 +508,18 @@ define("rEYEker", ["require", "exports", "useCases", "ImageCalculator"], functio
     var ex_1_box;
     var ex_2_box;
     var ex_3_box;
+    function DateOffset(offset) {
+        return new Date(+new Date + offset);
+    }
+    document.addEventListener('keydown', function (e) {
+        if (e.code === "Space") {
+            e.preventDefault();
+            current_step += 1;
+            if (current_step < times.length) {
+                start_time = DateOffset(-1 * times[current_step][0]);
+            }
+        }
+    });
     if (useCases_1.UseCases.htmlTesting === true) {
         xFoldingRangeInput = document.getElementById("xFoldingRange");
         yFoldingRangeInput = document.getElementById("yFoldingRange");
@@ -534,20 +551,6 @@ define("rEYEker", ["require", "exports", "useCases", "ImageCalculator"], functio
     var ctx = canvas.getContext("2d");
     var image = new Image();
     var eyeTrackImage;
-    visibleImageCanvas.addEventListener('mousemove', function (event) {
-        var rect = visibleImageCanvas.getBoundingClientRect();
-        mouseXOverMainCanvas = event.x - rect.left;
-        mouseYOverMainCanvas = event.y - rect.top;
-        mouseMoved = true;
-    });
-    visibleImageCanvas.addEventListener('mousedown', function (event) {
-        if (event.button === 0) {
-            var rect = visibleImageCanvas.getBoundingClientRect();
-            mouseXOverMainCanvas = event.x - rect.left;
-            mouseYOverMainCanvas = event.y - rect.top;
-            mouseClickedLeft = true;
-        }
-    });
     if (useCases_1.UseCases.htmlTesting === true) {
         xFoldingRangeInput.oninput = function () {
             var xBlur = Number(xFoldingRangeInput.value);
@@ -699,6 +702,8 @@ define("rEYEker", ["require", "exports", "useCases", "ImageCalculator"], functio
                         eyeTrackImage.set_ellipse_radius_x(ellipse_radius_x);
                         eyeTrackImage.set_ellipse_radius_y(ellipse_radius_y);
                         calculateNew = false;
+                        today = new Date();
+                        start_time = today.getTime();
                         return [2];
                 }
             });
@@ -727,8 +732,6 @@ define("rEYEker", ["require", "exports", "useCases", "ImageCalculator"], functio
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        while (eyeTrackImage.read_and_reset_calculated_lock() == false) {
-                        }
                         buffer = eyeTrackImage.get_blurry_buffer();
                         return [4, drawSubPart(0, image.height, 0, image.width, buffer, image.width, ctx)];
                     case 1:
@@ -775,9 +778,12 @@ define("rEYEker", ["require", "exports", "useCases", "ImageCalculator"], functio
             });
         });
     }
+    function sleep(ms) {
+        return new Promise(function (resolve) { return setTimeout(resolve, ms); });
+    }
     function drawImage() {
         return __awaiter(this, void 0, void 0, function () {
-            var log, data, i, time, i;
+            var i, current_time, i;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -786,40 +792,46 @@ define("rEYEker", ["require", "exports", "useCases", "ImageCalculator"], functio
                         return [4, drawBlurryBuffer()];
                     case 1:
                         _a.sent();
-                        return [3, 6];
+                        return [3, 8];
                     case 2:
-                        if (!(mouseClickMode === false && mouseMoved === true)) return [3, 4];
-                        mouseMoved = false;
-                        return [4, drawVisiblePart()];
+                        if (interface_set == false) {
+                            interface_set = true;
+                            calculation_done = [];
+                            for (i = 0; i < times.length; i++) {
+                                calculation_done.push(false);
+                            }
+                        }
+                        today = new Date();
+                        current_time = today.getTime() - start_time;
+                        console.table(times);
+                        i = 0;
+                        _a.label = 3;
                     case 3:
-                        _a.sent();
-                        return [3, 6];
-                    case 4:
-                        if (!(mouseClickMode === true && mouseClickedLeft === true)) return [3, 6];
-                        mouseClickedLeft = false;
+                        if (!(i < times.length)) return [3, 6];
+                        if (!(times[i][0] <= current_time && current_time < times[i][1] && calculation_done[i] == false)) return [3, 5];
+                        current_step = i;
+                        calculation_done[i] = true;
+                        mouseXOverMainCanvas = times[i][2];
+                        mouseYOverMainCanvas = times[i][3];
                         return [4, drawVisiblePart()];
-                    case 5:
+                    case 4:
                         _a.sent();
-                        log = eyeTrackImage.get_click_log();
-                        data = "";
-                        for (i = 0; i < log.length; i++) {
-                            data += log[i].get_x() + "-" + log[i].get_y() + " ";
-                        }
-                        console.log("Data: " + data);
-                        time = eyeTrackImage.get_click_log_times();
-                        data = "";
-                        for (i = 0; i < time.length; i++) {
-                            data += time[i] + " ";
-                        }
-                        console.log("Time: " + data);
-                        _a.label = 6;
-                    case 6: return [2];
+                        _a.label = 5;
+                    case 5:
+                        i++;
+                        return [3, 3];
+                    case 6: return [4, sleep(1000)];
+                    case 7:
+                        _a.sent();
+                        _a.label = 8;
+                    case 8: return [2, true];
                 }
             });
         });
     }
     function running() {
         return __awaiter(this, void 0, void 0, function () {
+            var flag;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -829,7 +841,10 @@ define("rEYEker", ["require", "exports", "useCases", "ImageCalculator"], functio
                         return [3, 3];
                     case 1: return [4, drawImage()];
                     case 2:
-                        _a.sent();
+                        flag = _a.sent();
+                        if (flag == false) {
+                            return [2];
+                        }
                         _a.label = 3;
                     case 3:
                         requestAnimationFrame(running);
