@@ -21,7 +21,7 @@ Furthermore, it is checked that only one useCase is active at a time. This happe
 /**
  * Indicates that the REYEker tool will be uses on soSciSurvey
  */
-public static soSciSurvey = false;
+public static soSciSurvey = true;
 
 /**
  * checks if exactly one flag is set
