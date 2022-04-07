@@ -30,6 +30,7 @@
     <list default="true" id="a9f458ff-f848-4d7e-b22f-abe55be0863f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/options.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/rEYEker.d.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/rEYEker.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/rEYEker.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/rEYEker.ts" afterDir="false" />
@@ -85,7 +86,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.editor" />
-    <property name="ts.external.directory.path" value="C:\Users\jonas\AppData\Local\JetBrains\Toolbox\apps\WebStorm\ch-0\213.5744.224\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+    <property name="ts.external.directory.path" value="C:\Users\jonas\AppData\Local\JetBrains\Toolbox\apps\WebStorm\ch-0\213.7172.31\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">

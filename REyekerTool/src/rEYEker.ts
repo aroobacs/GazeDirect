@@ -79,9 +79,14 @@ function DateOffset( offset ) {
 document.addEventListener('keydown', (e) => {
     if (e.code === "Space") {
         e.preventDefault()
-        current_step += 1;
+        today = new Date();
+        let current_time_elapsed = today.getTime() - start_time;
         if(current_step < times.length){
-            start_time = DateOffset(-1* times[current_step][0])
+            let min_duration = times[current_step][0]
+            if(current_time_elapsed >= min_duration){
+                current_step += 1;
+                start_time = today.getTime();
+            }
         }
     }
 });
@@ -439,20 +444,20 @@ async function drawImage() {
                 calculation_done.push(false)
             }
         }
-        today = new Date();
-        let current_time = today.getTime() - start_time;
 
-        console.table(times)
-        for(let i=0; i<times.length; i++){
-            if(times[i][0] <= current_time && current_time < times[i][1] && calculation_done[i] == false){
-                current_step = i;
-                calculation_done[i] = true;
-                mouseXOverMainCanvas = times[i][2];
-                mouseYOverMainCanvas = times[i][3];
-                await drawVisiblePart();
-            }
+        if(current_step >= calculation_done){
+            return true;
         }
-        await sleep(1000);
+
+        if(calculation_done[current_step] == false){
+            calculation_done[current_step] = true;
+            console.log(current_step)
+            console.log(times)
+            mouseXOverMainCanvas = times[current_step][1];
+            mouseYOverMainCanvas = times[current_step][2];
+            await drawVisiblePart();
+        }
+        await sleep(100);
     }
     return true;
 }

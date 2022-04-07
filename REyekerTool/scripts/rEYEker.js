@@ -453,8 +453,8 @@ define("useCases", ["require", "exports"], function (require, exports) {
                 value++;
             return value === 1;
         };
-        UseCases.htmlTesting = false;
-        UseCases.soSciSurvey = true;
+        UseCases.htmlTesting = true;
+        UseCases.soSciSurvey = false;
         return UseCases;
     }());
     exports.UseCases = UseCases;
@@ -514,9 +514,14 @@ define("rEYEker", ["require", "exports", "useCases", "ImageCalculator"], functio
     document.addEventListener('keydown', function (e) {
         if (e.code === "Space") {
             e.preventDefault();
-            current_step += 1;
+            today = new Date();
+            var current_time_elapsed = today.getTime() - start_time;
             if (current_step < times.length) {
-                start_time = DateOffset(-1 * times[current_step][0]);
+                var min_duration = times[current_step][0];
+                if (current_time_elapsed >= min_duration) {
+                    current_step += 1;
+                    start_time = today.getTime();
+                }
             }
         }
     });
@@ -783,7 +788,7 @@ define("rEYEker", ["require", "exports", "useCases", "ImageCalculator"], functio
     }
     function drawImage() {
         return __awaiter(this, void 0, void 0, function () {
-            var i, current_time, i;
+            var i;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
@@ -792,7 +797,7 @@ define("rEYEker", ["require", "exports", "useCases", "ImageCalculator"], functio
                         return [4, drawBlurryBuffer()];
                     case 1:
                         _a.sent();
-                        return [3, 8];
+                        return [3, 6];
                     case 2:
                         if (interface_set == false) {
                             interface_set = true;
@@ -801,30 +806,24 @@ define("rEYEker", ["require", "exports", "useCases", "ImageCalculator"], functio
                                 calculation_done.push(false);
                             }
                         }
-                        today = new Date();
-                        current_time = today.getTime() - start_time;
-                        console.table(times);
-                        i = 0;
-                        _a.label = 3;
-                    case 3:
-                        if (!(i < times.length)) return [3, 6];
-                        if (!(times[i][0] <= current_time && current_time < times[i][1] && calculation_done[i] == false)) return [3, 5];
-                        current_step = i;
-                        calculation_done[i] = true;
-                        mouseXOverMainCanvas = times[i][2];
-                        mouseYOverMainCanvas = times[i][3];
+                        if (current_step >= calculation_done) {
+                            return [2, true];
+                        }
+                        if (!(calculation_done[current_step] == false)) return [3, 4];
+                        calculation_done[current_step] = true;
+                        console.log(current_step);
+                        console.log(times);
+                        mouseXOverMainCanvas = times[current_step][1];
+                        mouseYOverMainCanvas = times[current_step][2];
                         return [4, drawVisiblePart()];
-                    case 4:
+                    case 3:
                         _a.sent();
-                        _a.label = 5;
+                        _a.label = 4;
+                    case 4: return [4, sleep(100)];
                     case 5:
-                        i++;
-                        return [3, 3];
-                    case 6: return [4, sleep(1000)];
-                    case 7:
                         _a.sent();
-                        _a.label = 8;
-                    case 8: return [2, true];
+                        _a.label = 6;
+                    case 6: return [2, true];
                 }
             });
         });
