@@ -1,16 +1,5 @@
 public class F {
-	static void multiply(int mat1[][], int mat2[][], int res[][]) {
-		int i, j, k;
-		for (i = 0; i < 3; i++) {
-			for (j = 0; j < 3; j++) {
-				res[i][j] = 0;
-				for (k = 0; k < 3; k++)
-					res[i][j] += mat1[i][k] * mat2[k][j];
-			}
-		}
-	}
-
-	public static void main(String[] args) {
+public static void main(String[] args) {
 		int mat1[][] = { { 1, 1, 1 }, { 2, 2, 2 }, { 3, 3, 3 } };
 		int mat2[][] = { { 1, 1, 1 }, { 2, 2, 2 }, { 3, 3, 3 } };
 		int res[][] = new int[3][3];
@@ -22,4 +11,16 @@ public class F {
 			System.out.println();
 		}
 	}
+	static void multiply(int mat1[][], int mat2[][], int res[][]) {
+		int i, j, k;
+		for (i = 0; i < 3; i++) {
+			for (j = 0; j < 3; j++) {
+				res[i][j] = 0;
+				for (k = 0; k < 3; k++)
+					res[i][j] += mat1[i][k] * mat2[k][j];
+			}
+		}
+	}
+
+	
 }

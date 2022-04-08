@@ -1,4 +1,8 @@
 public class ReverseString {
+public static void main(String[] args) {
+		String str = "EyeTracking";
+		reverseStr(str);
+	}
 	static void reverseStr(String str) {
 		int num = str.length();
 		char[] ch = str.toCharArray();
@@ -11,8 +15,5 @@ public class ReverseString {
 		System.out.println(ch);
 	}
 
-	public static void main(String[] args) {
-		String str = "EyeTracking";
-		reverseStr(str);
-	}
+	
 }

@@ -1,4 +1,8 @@
 public class E {
+public static void main(String[] args) {
+		int n = 17;
+		method(n);
+	}
 	static void method(int num) {
 		int[] binaryNum = new int[32];
 		int i = 0;

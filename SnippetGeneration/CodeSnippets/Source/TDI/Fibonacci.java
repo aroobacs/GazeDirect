@@ -1,4 +1,8 @@
 public class Fibonacci {
+public static void main(String args[]) {
+		int num = 3;
+		System.out.println(findFibonacci(num));
+	}
 	static int findFibonacci(int num) {
 		int arr[] = new int[num + 2];
 		int i;
@@ -10,8 +14,5 @@ public class Fibonacci {
 		return arr[num];
 	}
 
-	public static void main(String args[]) {
-		int num = 3;
-		System.out.println(findFibonacci(num));
-	}
+	
 }

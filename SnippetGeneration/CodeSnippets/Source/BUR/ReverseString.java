@@ -1,4 +1,8 @@
 public class G {
+public static void main(String[] args) {
+		int n = 15;
+		method(n);
+	}
 	public static void method(int num) {
 		int i = 2;
 		if (num == 1)
@@ -9,8 +13,5 @@ public class G {
 		method(num / i);
 	}
 
-	public static void main(String[] args) {
-		int n = 15;
-		method(n);
-	}
+	
 }

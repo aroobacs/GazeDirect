@@ -1,4 +1,9 @@
 public class BubbleSort {
+public static void main(String[] args) {
+		int arr[] = { 23, 16, 3, 42, 75, 536, 61 };
+		sort(arr, arr.length);
+		System.out.println(Arrays.toString(arr));
+	}
 	static void sort(int arr[], int num) {
 		if (num == 1)
 			return;
@@ -11,9 +16,5 @@ public class BubbleSort {
 		sort(arr, num - 1);
 	}
 
-	public static void main(String[] args) {
-		int arr[] = { 23, 16, 3, 42, 75, 536, 61 };
-		sort(arr, arr.length);
-		System.out.println(Arrays.toString(arr));
-	}
+	
 }

@@ -1,4 +1,8 @@
 public class G {
+public static void main(String[] args) {
+		int n = 15;
+		method(n);
+	}
 	public static void method(int num) {
 		while (num % 2 == 0) {
 			System.out.print(2 + " ");
@@ -14,8 +18,5 @@ public class G {
 			System.out.print(num);
 	}
 
-	public static void main(String[] args) {
-		int n = 15;
-		method(n);
-	}
+	
 }

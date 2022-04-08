@@ -1,4 +1,8 @@
 public class H {
+public static void main(String[] args) {
+		String str = "EyeTracking";
+		method(str);
+	}
 	static void method(String str) {
 		int num = str.length();
 		char[] ch = str.toCharArray();
@@ -11,8 +15,5 @@ public class H {
 		System.out.println(ch);
 	}
 
-	public static void main(String[] args) {
-		String str = "EyeTracking";
-		method(str);
-	}
+	
 }

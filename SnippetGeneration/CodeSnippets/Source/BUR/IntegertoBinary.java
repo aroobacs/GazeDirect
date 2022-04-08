@@ -1,4 +1,8 @@
 public class E {
+public static void main(String[] args) {
+		int n = 17;
+		method(n);
+	}
 	static void method(int num) {
 		if (num == 0)
 			return;
@@ -6,8 +10,5 @@ public class E {
 		System.out.print(num % 2);
 	}
 
-	public static void main(String[] args) {
-		int n = 17;
-		method(n);
-	}
+	
 }

@@ -1,4 +1,8 @@
 public class IntegertoBinary {
+public static void main(String[] args) {
+		int n = 17;
+		decToBinary(n);
+	}
 	static void decToBinary(int num) {
 		if (num == 0)
 			return;
@@ -6,8 +10,5 @@ public class IntegertoBinary {
 		System.out.print(num % 2);
 	}
 
-	public static void main(String[] args) {
-		int n = 17;
-		decToBinary(n);
-	}
+	
 }

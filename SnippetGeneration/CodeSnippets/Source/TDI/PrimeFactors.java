@@ -1,4 +1,8 @@
 class PrimeFactors {
+public static void main(String[] args) {
+		int n = 15;
+		primeFactors(n);
+	}
 	public static void primeFactors(int num) {
 		while (num % 2 == 0) {
 			System.out.print(2 + " ");
@@ -14,8 +18,5 @@ class PrimeFactors {
 			System.out.print(num);
 	}
 
-	public static void main(String[] args) {
-		int n = 15;
-		primeFactors(n);
-	}
+	
 }

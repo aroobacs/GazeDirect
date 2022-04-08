@@ -1,4 +1,9 @@
 public class B {
+public static void main(String[] args) {
+		int arr[] = { 23, 16, 3, 42, 75, 536, 61 };
+		method(arr, arr.length);
+		System.out.println(Arrays.toString(arr));
+	}
 	static void method(int[] arr, int num) {
 		int temp = 0;
 		for (int i = 0; i < num; i++) {

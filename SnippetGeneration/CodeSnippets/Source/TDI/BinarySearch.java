@@ -1,4 +1,13 @@
 public class BinarySearch {
+public static void main(String args[]) {
+		int arr[] = { 2, 3, 4, 10, 40 };
+		int num = 10;
+		int position = binarySearch(arr, num);
+		if (position == -1)
+			System.out.println("Element not present");
+		else
+			System.out.println(position);
+	}
 	static int binarySearch(int arr[], int num) {
 		int l = 0, result = arr.length - 1;
 		while (l <= result) {
@@ -13,13 +22,5 @@ public class BinarySearch {
 		return -1;
 	}
 
-	public static void main(String args[]) {
-		int arr[] = { 2, 3, 4, 10, 40 };
-		int num = 10;
-		int position = binarySearch(arr, num);
-		if (position == -1)
-			System.out.println("Element not present");
-		else
-			System.out.println(position);
-	}
+	
 }

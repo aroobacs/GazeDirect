@@ -1,0 +1,31 @@
+{
+    "font-normal": "JetBrainsMono-Regular.ttf",
+    "font-bold": "JetBrainsMono-Bold.ttf",
+    "font-italic": "JetBrainsMono-BoldItalic.ttf",
+    "font-bold-italic": "JetBrainsMono-Italic.ttf",
+    "font-size": 14,
+    "width-margin": 5,
+    "height-margin": 5,
+    "spacing": 8,
+    "background-color": [
+        255,
+        255,
+        255
+    ],
+    "source-code": [
+        "public class Fibonacci {",
+        "public static void main(String args[]) {",
+        "        int num = 3;",
+        "        System.out.println(findFibonacci(num));",
+        "    }",
+        "    static int findFibonacci(int num) {",
+        "        if (num <= 1)",
+        "            return num;",
+        "        return findFibonacci(num - 1) + findFibonacci(num - 2);",
+        "    }",
+        "",
+        "    ",
+        "}",
+        ""
+    ]
+}
